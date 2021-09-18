@@ -49,7 +49,7 @@ func main() {
 	initialize.InitRedsyncLock()
 
 	// 初始化es
-	initialize.InitEs()
+	//initialize.InitEs()
 
 	// 初始化jaeger
 	initialize.InitJaeger()

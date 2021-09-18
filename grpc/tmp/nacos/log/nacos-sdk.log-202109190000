@@ -1,0 +1,12 @@
+2021-09-19T00:11:20.433+0800	[34mINFO[0m	logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2021-09-19T00:11:20.637+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-srv.jsonpro8fbe2eaa241db892b76dc760a30956f7e16c905e-bd10-4f62-98cb-acc78d967b59 tenant:e16c905e-bd10-4f62-98cb-acc78d967b59] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2021-09-19T00:11:20.706+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-19T00:11:20.718+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-srv.jsonpro8fbe2eaa241db892b76dc760a30956f7e16c905e-bd10-4f62-98cb-acc78d967b59 tenant:e16c905e-bd10-4f62-98cb-acc78d967b59] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-19T00:11:50.259+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-19T00:11:50.271+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-srv.jsonpro8fbe2eaa241db892b76dc760a30956f7e16c905e-bd10-4f62-98cb-acc78d967b59 tenant:e16c905e-bd10-4f62-98cb-acc78d967b59] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2021-09-19T00:12:19.778+0800	[34mINFO[0m	[client.ListenConfig] no change
+2021-09-19T00:12:19.791+0800	[34mINFO[0m	[client.ListenConfig] request params:map[Listening-Configs:user-srv.jsonpro8fbe2eaa241db892b76dc760a30956f7e16c905e-bd10-4f62-98cb-acc78d967b59 tenant:e16c905e-bd10-4f62-98cb-acc78d967b59] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
