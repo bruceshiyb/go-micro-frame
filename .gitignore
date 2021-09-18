@@ -1,0 +1,6 @@
+.idea/
+.git/
+go.sum
+./grpc/tmp/nacos/cache/*
+./web/tmp/nacos/log/*
+
