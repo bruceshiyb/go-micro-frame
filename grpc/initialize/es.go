@@ -8,8 +8,8 @@ import (
 
 	"github.com/olivere/elastic/v7"
 
-	"go-micro-module/17-es/02-grpc/global"
-	"go-micro-module/17-es/02-grpc/model"
+	"go-micro-frame/global"
+	"go-micro-frame/model"
 )
 
 func InitEs() {

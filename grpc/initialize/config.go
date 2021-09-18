@@ -3,13 +3,11 @@ package initialize
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/nacos-group/nacos-sdk-go/clients"
-	"github.com/nacos-group/nacos-sdk-go/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
 	"go-micro-frame/global"
+	"microframe.com/nacos"
 )
 
 // 读取环境变量的配置
@@ -20,10 +18,9 @@ func GetEnvInfo(env string) bool {
 
 func InitConfig() {
 	debug := GetEnvInfo("MXSHOP_DEBUG")
-	configFilePrefix := "config"
-	configFileName := fmt.Sprintf("go-micro-frame/%s-prod.yaml", configFilePrefix)
+	configFileName := fmt.Sprintf("config-prod.yaml")
 	if debug {
-		configFileName = fmt.Sprintf("go-micro-frame/%s-dev.yaml", configFilePrefix)
+		configFileName = fmt.Sprintf("config-dev.yaml")
 	}
 
 	// 读取文件配置内容
@@ -33,71 +30,48 @@ func InitConfig() {
 		panic(err)
 	}
 
-	////////////////////////////////
-	// 从 nacos 中读取配置
+	// 读取远程nacos配置信息
+	{
+		// 把本地设置的nacos配置连接信息解析到全局变量的 NacosConfig
+		if err := v.Unmarshal(&global.NacosConfig); err != nil {
+			panic(err)
+		}
 
-	// 把内容设置到全局变量的 NacosConfig
-	if err := v.Unmarshal(&global.NacosConfig); err != nil {
-		panic(err)
-	}
-
-	//从nacos中读取配置信息
-	sc := []constant.ServerConfig{
-		{
-			IpAddr: global.NacosConfig.Host,
-			Port:   global.NacosConfig.Port,
-		},
-	}
-	cc := constant.ClientConfig{
-		NamespaceId:         global.NacosConfig.Namespace, // 如果需要支持多namespace，我们可以场景多个client,它们有不同的NamespaceId
-		TimeoutMs:           5000,
-		NotLoadCacheAtStart: true,
-		LogDir:              "tmp/nacos/log",
-		CacheDir:            "tmp/nacos/cache",
-		RotateTime:          "1h",
-		MaxAge:              3,
-		LogLevel:            "debug",
-	}
-	configClient, err := clients.CreateConfigClient(map[string]interface{}{
-		"serverConfigs": sc,
-		"clientConfig":  cc,
-	})
-	if err != nil {
-		panic(err)
-	}
-
-	content, err := configClient.GetConfig(vo.ConfigParam{
-		DataId: global.NacosConfig.DataId,
-		Group:  global.NacosConfig.Group})
-
-	if err != nil {
-		panic(err)
-	}
-	//想要将一个json字符串转换成struct，需要去设置这个struct的tag
-	err = json.Unmarshal([]byte(content), &global.ServerConfig)
-	if err != nil {
-		zap.S().Fatalf("读取nacos配置失败： %s", err.Error())
+		// 读取远程nacos的配置内容
+		content, err := nacos.GetClientContent(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password,
+			global.NacosConfig.DataId, global.NacosConfig.Group)
+		if err != nil {
+			zap.S().Errorf("读取远程nacos配置信息失败: %s", err.Error())
+		}
+		err = json.Unmarshal([]byte(content), &global.ServerConfig)
+		if err != nil {
+			zap.S().Fatalf("解析远程nacos信息失败：%s", err.Error())
+		}
 	}
 
 	// 监听 nacos 配置变化
-	err = configClient.ListenConfig(vo.ConfigParam{
-		DataId: global.NacosConfig.DataId,
-		Group:  global.NacosConfig.Group,
-		OnChange: func(namespace, group, dataId, data string) {
-			fmt.Println("nacos中的配置", data)
-			// 这里输出的格式是：  { "name": "user-srv", "host": "10.4.7.71" }
-			err = json.Unmarshal([]byte(data), &global.ServerConfig)
-			if err != nil {
-				zap.S().Errorf("配置中心文件改变后，解析 Json失败")
-			}
-			InitDB() // 假设改变了，重新初始化db
-			zap.S().Infof("nacos 改变后配置：", &global.ServerConfig)
-		},
-	})
-	if err != nil {
-		zap.S().Errorf("配置中心文件变化，解析失败!")
-	}
-
-	zap.S().Infof("从nacos读取到的全部配置如下：", &global.ServerConfig)
-	////////////////////////////////
+	//{
+	//	configClient, err := nacos.GetConfigClient(global.NacosConfig.Host, global.NacosConfig.Port, global.NacosConfig.Namespace, global.NacosConfig.User, global.NacosConfig.Password)
+	//	if err != nil {
+	//		zap.S().Errorf("获取nacos的configClient失败")
+	//	}
+	//	err = configClient.ListenConfig(vo.ConfigParam{
+	//		DataId: global.NacosConfig.DataId,
+	//		Group:  global.NacosConfig.Group,
+	//		OnChange: func(namespace, group, dataId, data string) {
+	//			fmt.Println("nacos中的配置", data)
+	//			// 这里输出的格式是：  { "name": "user-srv", "host": "10.4.7.71" }
+	//			err = json.Unmarshal([]byte(data), &global.ServerConfig)
+	//			if err != nil {
+	//				zap.S().Errorf("配置中心文件改变后，解析 Json失败")
+	//			}
+	//			InitDB() // 假设改变了，重新初始化db
+	//			zap.S().Infof("nacos 改变后配置：", &global.ServerConfig)
+	//		},
+	//	})
+	//	if err != nil {
+	//		zap.S().Errorf("配置中心文件变化，解析失败!")
+	//	}
+	//}
+	zap.S().Infof("initConfig从远程nacos读取的配置信息是：", &global.ServerConfig)
 }
