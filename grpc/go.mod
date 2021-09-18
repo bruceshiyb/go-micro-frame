@@ -1,4 +1,4 @@
-module mall-srv
+module go-micro-frame
 
 go 1.16
 

@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"go-micro-module/20-temp/web/global"
+	"go-micro-frame-web/global"
 )
 
 func GetEnvInfo(env string) bool {
@@ -21,9 +21,9 @@ func GetEnvInfo(env string) bool {
 func InitConfig(){
 	debug := GetEnvInfo("MXSHOP_DEBUG")
 	configFilePrefix := "config"
-	configFileName := fmt.Sprintf("20-temp/web/%s-pro.yaml", configFilePrefix)
+	configFileName := fmt.Sprintf("go-micro-frame-web/%s-prod.yaml", configFilePrefix)
 	if debug {
-		configFileName = fmt.Sprintf("20-temp/web/%s-debug.yaml", configFilePrefix)
+		configFileName = fmt.Sprintf("go-micro-frame-web/%s-dev.yaml", configFilePrefix)
 	}
 
 	v := viper.New()

@@ -1,4 +1,4 @@
-module mall-web
+module go-micro-frame-web
 
 go 1.16
 

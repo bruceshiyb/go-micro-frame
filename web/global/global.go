@@ -3,8 +3,8 @@ package global
 import (
 	ut "github.com/go-playground/universal-translator"
 
-	"go-micro-module/20-temp/web/config"
-	"go-micro-module/20-temp/web/proto"
+	"go-micro-frame-web/config"
+	"go-micro-frame-web/proto"
 )
 
 var (

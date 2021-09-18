@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/opentracing/opentracing-go"
-	"go-micro-module/20-temp/grpc/utils/otgrpc"
+	"go-micro-frame/utils/otgrpc"
 	"net"
 	"os"
 	"os/signal"
@@ -16,12 +16,12 @@ import (
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
-	"go-micro-module/20-temp/grpc/global"
-	"go-micro-module/20-temp/grpc/handler"
-	"go-micro-module/20-temp/grpc/initialize"
-	"go-micro-module/20-temp/grpc/proto"
-	"go-micro-module/20-temp/grpc/utils"
-	"go-micro-module/20-temp/grpc/utils/register/consul"
+	"go-micro-frame/global"
+	"go-micro-frame/handler"
+	"go-micro-frame/initialize"
+	"go-micro-frame/proto"
+	"go-micro-frame/utils"
+	"go-micro-frame/utils/register/consul"
 )
 
 func main() {

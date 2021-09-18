@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 
-	"go-micro-module/20-temp/grpc/global"
+	"go-micro-frame/global"
 )
 
 // 读取环境变量的配置
@@ -21,9 +21,9 @@ func GetEnvInfo(env string) bool {
 func InitConfig() {
 	debug := GetEnvInfo("MXSHOP_DEBUG")
 	configFilePrefix := "config"
-	configFileName := fmt.Sprintf("20-temp/grpc/%s-prod.yaml", configFilePrefix)
+	configFileName := fmt.Sprintf("go-micro-frame/%s-prod.yaml", configFilePrefix)
 	if debug {
-		configFileName = fmt.Sprintf("20-temp/grpc/%s-dev.yaml", configFilePrefix)
+		configFileName = fmt.Sprintf("go-micro-frame/%s-dev.yaml", configFilePrefix)
 	}
 
 	// 读取文件配置内容
