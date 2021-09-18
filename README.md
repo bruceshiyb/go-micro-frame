@@ -1,4 +1,4 @@
-# go-micro-frame-doc
+# go-micro-frame
 
 go-micro-frame框架，是一套开源组件组合而成的微服务框架。
 
