@@ -1,14 +1,17 @@
 [done]
 logger
 nacos
+jaeger
+database/mysql
+consul-register
 
 [done && no test]
 
 
 [doing]
-consul
-elasticsearch
-rabbitmq
+consul-discovery
+elasticSearch
+rabbitMq
 
 redis-三种模式： standalone cluster sentinel
 redisSyncLock-分布式锁
@@ -19,5 +22,5 @@ csv
 
 
 kafka
-rocketmq
+rocketMq
 

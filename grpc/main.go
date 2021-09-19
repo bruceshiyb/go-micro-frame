@@ -21,7 +21,7 @@ import (
 	"go-micro-frame/handler"
 	"go-micro-frame/initialize"
 	"go-micro-frame/proto"
-	"go-micro-frame/utils/register/consul"
+	"microframe.com/consul"
 	"microframe.com/logger"
 )
 
@@ -82,9 +82,9 @@ func main() {
 	}()
 
 	//服务注册
-	register_client := consul.NewRegistryClient(global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
+	registerClient := consul.NewRegistryClient(global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
 	serviceId := fmt.Sprintf("%s", uuid.NewV4())
-	err = register_client.Register(global.ServerConfig.Host, *Port, global.ServerConfig.Name, global.ServerConfig.Tags, serviceId)
+	err = registerClient.Register(global.ServerConfig.Host, *Port, global.ServerConfig.Name, global.ServerConfig.Tags, serviceId)
 	if err != nil {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
@@ -96,7 +96,7 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	if err = register_client.DeRegister(serviceId); err != nil {
+	if err = registerClient.DeRegister(serviceId); err != nil {
 		zap.S().Info("注销失败:", err.Error())
 	} else {
 		zap.S().Info("注销成功")

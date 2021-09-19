@@ -57,6 +57,7 @@ nacos：已封装
 logger: 已封装
 jaeger: 已封装
 mysql：已封装，连接池方式
+consul-register: 已封装
 ```
 
 ```
