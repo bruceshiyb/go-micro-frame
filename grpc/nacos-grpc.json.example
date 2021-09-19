@@ -8,7 +8,7 @@
 		"srv"
 	],
 	"logger" : {
-	    "logFilePath": "./logs/go-micro-frame.log",
+	    "logFilePath": "./tmp/logs/go-micro-frame.log",
 	    "logLevel" : "debug",
 	    "maxSize" : 128,
 	    "maxBackups" : 30,
@@ -19,7 +19,10 @@
 		"port": 3307,
 		"user": "root",
 		"password": "root",
-		"db": "gomicrom_srv"
+		"db": "gomicrom_srv",
+		"maxIdleConns": 10,
+		"maxOpenConns": 100,
+		"maxLifetime": 20
 	},
 	"redis": {
 		"host": "10.4.7.71",

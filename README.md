@@ -33,19 +33,24 @@ cron            【分布式定时任务;go:go-cron,java:xxl-job】
 
 ```
 v1.1.1 完成
-已经实现了下面图片介绍中的大部分功能
+已经实现了模块介绍中的功能
+```
 
+```
 v1.2.0 开发中
-会把db、es、jaeger
-rabbitmq、redis、redsyncLock、sentinel、snowflake等再封装，
-独立管理和维护。
+会把microframe.com里的模块全部实现，进行统一维护，方便更新和迭代替换。
+nacos：已封装
+logger: 已封装
+jaeger: 已封装
+mysql：已封装，连接池方式
+```
 
-nacos：已经完成独立封装。
-logger: 已经完成独立封装。
-
+```
 v1.3.0 开发中
 会增加k8s的自动化发布脚本，Prometheus、Grafana监控等
+```
 
+```
 v1.4.0 规划
 会改造到istio或者dapr的三代微服务方式中，会单独另起一个项目进行维护
 ```

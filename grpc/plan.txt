@@ -2,17 +2,22 @@
 logger
 nacos
 
+[done && no test]
+
 
 [doing]
-jaeger no test
-database
 consul
-rabbitmq
-redis
-
 elasticsearch
-redsyncLock
+rabbitmq
+
+redis-三种模式： standalone cluster sentinel
+redisSyncLock-分布式锁
+
 sentinel
 snowflake
 csv
+
+
+kafka
+rocketmq
 

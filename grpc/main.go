@@ -88,8 +88,8 @@ func main() {
 	if err != nil {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
-	zap.S().Debugf("启动服务器, 端口： %d", *Port)
-	logger.Info("启动微服务的端口是", logger.Int("port:", *Port))
+	zap.S().Debugf("启动grpc服务端口： %d", *Port)
+	logger.Info("", logger.Int("启动grpc服务端口,port:", *Port))
 	/////////////////////////////////
 
 	//接收终止信号

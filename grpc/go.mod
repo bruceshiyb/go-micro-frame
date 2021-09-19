@@ -14,6 +14,7 @@ require (
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/hashicorp/serf v0.8.5 // indirect
+	github.com/jinzhu/gorm v1.9.16
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/olivere/elastic/v7 v7.0.29
 	github.com/opentracing/opentracing-go v1.2.0
@@ -32,6 +33,7 @@ require (
 	gorm.io/gorm v1.21.13
 	microframe.com/jaeger v0.0.0-00010101000000-000000000000
 	microframe.com/logger v0.0.0-00010101000000-000000000000
+	microframe.com/mysql v0.0.0-00010101000000-000000000000
 	microframe.com/nacos v0.0.0-00010101000000-000000000000
 )
 
@@ -40,3 +42,5 @@ replace microframe.com/nacos => ../microframe.com/nacos
 replace microframe.com/logger => ../microframe.com/logger
 
 replace microframe.com/jaeger => ../microframe.com/jaeger
+
+replace microframe.com/mysql => ../microframe.com/database/mysql

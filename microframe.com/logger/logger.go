@@ -13,7 +13,7 @@ import (
 var logger *zap.Logger = nil
 
 //配置变量默认值,读取配置文件进行修改
-var appName = "logapp"                         // app标记
+var appName = "logappdefault"                         // app标记
 var logFilePath = "./logs/" + appName + ".log" // 保存路径
 var logLevel = "debug"                         // 日志等级
 var maxSizeDefault = 128                       // 每个日志文件保存的最大尺寸 单位：M

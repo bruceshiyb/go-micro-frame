@@ -1,11 +1,14 @@
 package config
 
 type MysqlConfig struct {
-	Host     string `mapstructure:"host" json:"host"`
-	Port     int    `mapstructure:"port" json:"port"`
-	Name     string `mapstructure:"db" json:"db"`
-	User     string `mapstructure:"user" json:"user"`
-	Password string `mapstructure:"password" json:"password"`
+	Host         string `mapstructure:"host" json:"host"`
+	Port         int    `mapstructure:"port" json:"port"`
+	Name         string `mapstructure:"db" json:"db"`
+	User         string `mapstructure:"user" json:"user"`
+	Password     string `mapstructure:"password" json:"password"`
+	MaxIdleConns int    `maxIdleConns:"password" json:"maxIdleConns"`
+	MaxOpenConns int    `maxIdleConns:"maxOpenConns" json:"maxOpenConns"`
+	MaxLifetime  int    `maxIdleConns:"maxLifetime" json:"maxLifetime"`
 }
 
 type ConsulConfig struct {
@@ -21,9 +24,9 @@ type RedisConfig struct {
 }
 
 type JaegerConfig struct {
-	Host string `mapstructure:"host" json:"host"`
-	Port int    `mapstructure:"port" json:"port"`
-	Name string `mapstructure:"name" json:"name"`
+	Host     string `mapstructure:"host" json:"host"`
+	Port     int    `mapstructure:"port" json:"port"`
+	Name     string `mapstructure:"name" json:"name"`
 	User     string `mapstructure:"user" json:"user"`
 	Password string `mapstructure:"password" json:"password"`
 }
@@ -46,7 +49,7 @@ type LoggerConfig struct {
 	LogFilePath string `mapstructure:"logFilePath" json:"logFilePath"`
 	LogLevel    string `mapstructure:"logLevel" json:"logLevel"`
 	MaxSize     int    `mapstructure:"maxSize" json:"maxSize"`
-	MaxBackups  int `mapstructure:"maxBackups" json:"maxBackups"`
+	MaxBackups  int    `mapstructure:"maxBackups" json:"maxBackups"`
 	MaxAge      int    `mapstructure:"maxAge" json:"maxAge"`
 }
 
