@@ -3,8 +3,7 @@
 
 go.sum
 
-./grpc/tmp/nacos/cache/*
-./grpc/tmp/logs/*
+./grpc/tmp/
 
-./web/tmp/nacos/log/*
+./web/tmp/
 
