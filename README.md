@@ -6,9 +6,7 @@ go-micro-frame框架，是一套开源组件组合而成的微服务框架。
 
 文档参考：https://github.com/jettjia/go-micro-fram-doc
 
-v1.0.0 已经完成，已经实现了下面介绍的模块
-
-v1.1.0 开发中，将一些公用的模块进行再封装和统一管理，方便快速的进行模块替换。
+模块介绍：
 
 ```
 gorm		【orm】
@@ -29,5 +27,24 @@ amqp            【amqp，消息队列，比如：rabbitmq】
 cron            【分布式定时任务;go:go-cron,java:xxl-job】
 分布式事务	【方式1：rocketmq，事务消息方式；方式2：seata-golang】
 分布式mysql	【go: gaea分库分表; java: shardingsphere-proxy】
+```
+
+版本说明：
+
+```
+v1.1.1 完成
+已经实现了下面图片介绍中的大部分功能
+
+v1.2.0 开发中
+会把db、es、jaeger、logger
+rabbitmq、redis、redsyncLock、sentinel、snowflake等再封装，
+独立管理和维护。
+nacos：已经完成独立封装。
+
+v1.3.0 开发中
+会增加k8s的自动化发布脚本，Prometheus、Grafana监控等
+
+v1.4.0 规划
+会改造到istio或者dapr的三代微服务方式中，会单独另起一个项目进行维护
 ```
 
