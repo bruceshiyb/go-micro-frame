@@ -3,7 +3,9 @@
 
 go.sum
 
-./grpc/tmp/
+grpc/tmp/
+web/tmp/
 
-./web/tmp/
+microframe.com/logger/logs
+microframe.com/nacos/tmp
 
