@@ -4,13 +4,12 @@ nacos
 jaeger
 database/mysql
 consul-register
+consul-discovery
 
 [done && no test]
 
 
 [doing]
-consul-discovery
-elasticSearch
 rabbitMq
 
 redis-三种模式： standalone cluster sentinel
@@ -18,9 +17,9 @@ redisSyncLock-分布式锁
 
 sentinel
 snowflake
+
 csv
-
-
+elasticSearch
 kafka
 rocketMq
 

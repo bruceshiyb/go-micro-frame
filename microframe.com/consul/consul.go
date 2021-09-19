@@ -1,7 +1,11 @@
 package consul
 
 import (
+	"consul/otgrpc"
 	"fmt"
+
+	"github.com/opentracing/opentracing-go"
+	"google.golang.org/grpc"
 
 	"github.com/hashicorp/consul/api"
 )
@@ -65,4 +69,14 @@ func (r *Registry) DeRegister(serviceId string) error {
 	}
 	err = client.Agent().ServiceDeregister(serviceId)
 	return err
+}
+
+func Discovery(address string, port int, name string) (*grpc.ClientConn, error) {
+	conn, err := grpc.Dial(
+		fmt.Sprintf("consul://%s:%d/%s?wait=14s", address, port, name),
+		grpc.WithInsecure(),
+		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy": "round_robin"}`),
+		grpc.WithUnaryInterceptor(otgrpc.OpenTracingClientInterceptor(opentracing.GlobalTracer())),
+	)
+	return conn, err
 }

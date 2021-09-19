@@ -20,3 +20,11 @@ func Test_RegistryConsul(t *testing.T) {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
 }
+
+func Test_DiscoveryConsul(t *testing.T) {
+	// 服务发现
+	_, err := Discovery("10.4.7.71", 51000, "gomicrom-srv")
+	if err != nil {
+		panic(err)
+	}
+}
