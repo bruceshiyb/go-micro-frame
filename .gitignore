@@ -4,7 +4,7 @@
 go.sum
 
 ./grpc/tmp/nacos/cache/*
-./grp/tmp/logs/*
+./grpc/tmp/logs/*
 
 ./web/tmp/nacos/log/*
 

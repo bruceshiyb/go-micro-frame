@@ -1,2 +1,4 @@
 {"level":"debug","time":"2021-09-19 12-44-58.847","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-all/go-micro-frame/grpc/initialize/mylogger.go:14","msg":"初始化日志","app":"gomicro-srv"}
 {"level":"info","time":"2021-09-19 12-44-58.865","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-all/go-micro-frame/grpc/main.go:93","msg":"启动微服务的端口是：","app":"gomicro-srv","":39275}
+{"level":"debug","time":"2021-09-19 12-49-35.933","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-all/go-micro-frame/grpc/initialize/mylogger.go:14","msg":"初始化日志","app":"gomicro-srv"}
+{"level":"info","time":"2021-09-19 12-49-35.946","line":"/mnt/hgfs/go_work/wingopath/go-micro-frame-all/go-micro-frame/grpc/main.go:92","msg":"启动微服务的端口是","app":"gomicro-srv","port:":39059}
