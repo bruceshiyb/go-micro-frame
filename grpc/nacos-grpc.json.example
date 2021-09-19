@@ -1,10 +1,10 @@
 {
-	"name": "gomicro-srv",
+	"name": "gomicrom-srv",
 	"host": "10.4.7.71",
 	"port": 50051,
 	"env" : "dev",
 	"tags": [
-		"gomicro",
+		"gomicrom",
 		"srv"
 	],
 	"logger" : {
@@ -19,7 +19,7 @@
 		"port": 3307,
 		"user": "root",
 		"password": "root",
-		"db": "gomicro_srv"
+		"db": "gomicrom_srv"
 	},
 	"redis": {
 		"host": "10.4.7.71",
@@ -34,7 +34,9 @@
 	"jaeger": {
 		"host": "10.4.7.71",
 		"port": 6831,
-		"name": "gomicro"
+		"name": "gomicrom",
+		"user": "",
+        "password": ""
 	},
 	"amqp": {
 		"host": "10.4.7.71",

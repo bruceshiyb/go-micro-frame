@@ -1,0 +1,18 @@
+[done]
+logger
+nacos
+
+
+[doing]
+jaeger no test
+database
+consul
+rabbitmq
+redis
+
+elasticsearch
+redsyncLock
+sentinel
+snowflake
+csv
+

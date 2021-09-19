@@ -3,7 +3,6 @@ module go-micro-frame
 go 1.16
 
 require (
-	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/armon/go-metrics v0.3.2 // indirect
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-redis/redis/v8 v8.11.3
@@ -23,7 +22,6 @@ require (
 	github.com/streadway/amqp v1.0.0
 	github.com/stretchr/testify v1.7.0
 	github.com/uber/jaeger-client-go v2.29.1+incompatible
-	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	go.uber.org/zap v1.19.0
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
 	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d
@@ -32,6 +30,7 @@ require (
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gorm.io/driver/mysql v1.1.2
 	gorm.io/gorm v1.21.13
+	microframe.com/jaeger v0.0.0-00010101000000-000000000000
 	microframe.com/logger v0.0.0-00010101000000-000000000000
 	microframe.com/nacos v0.0.0-00010101000000-000000000000
 )
@@ -39,3 +38,5 @@ require (
 replace microframe.com/nacos => ../microframe.com/nacos
 
 replace microframe.com/logger => ../microframe.com/logger
+
+replace microframe.com/jaeger => ../microframe.com/jaeger

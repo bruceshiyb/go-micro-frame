@@ -24,6 +24,8 @@ type JaegerConfig struct {
 	Host string `mapstructure:"host" json:"host"`
 	Port int    `mapstructure:"port" json:"port"`
 	Name string `mapstructure:"name" json:"name"`
+	User     string `mapstructure:"user" json:"user"`
+	Password string `mapstructure:"password" json:"password"`
 }
 
 type EsConfig struct {
