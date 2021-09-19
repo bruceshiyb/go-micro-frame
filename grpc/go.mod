@@ -16,7 +16,6 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/hashicorp/serf v0.8.5 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect
-	github.com/nacos-group/nacos-sdk-go v1.0.9
 	github.com/olivere/elastic/v7 v7.0.29
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/satori/go.uuid v1.2.0
@@ -33,7 +32,10 @@ require (
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gorm.io/driver/mysql v1.1.2
 	gorm.io/gorm v1.21.13
+	microframe.com/logger v0.0.0-00010101000000-000000000000
 	microframe.com/nacos v0.0.0-00010101000000-000000000000
 )
 
 replace microframe.com/nacos => ../microframe.com/nacos
+
+replace microframe.com/logger => ../microframe.com/logger

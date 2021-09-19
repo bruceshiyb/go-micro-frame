@@ -2,13 +2,13 @@
 	"name": "gomicro-srv",
 	"host": "10.4.7.71",
 	"port": 50051,
-	"env" : "dev",
+	"env" : "prod",
 	"tags": [
 		"gomicro",
 		"srv"
 	],
 	"logger" : {
-	    "logFilePath": "./logs/go-micro-frame.log",
+	    "logFilePath": "./tmp/logs/microframe.log",
 	    "logLevel" : "debug",
 	    "maxSize" : 128,
 	    "maxBackups" : 30,

@@ -3,6 +3,7 @@ package global
 import (
 	"github.com/go-redsync/redsync/v4"
 	"github.com/olivere/elastic/v7"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 
 	"go-micro-frame/config"
@@ -14,4 +15,5 @@ var (
 	NacosConfig config.NacosConfig
 	EsClient *elastic.Client
 	RedsyncLock *redsync.Redsync
+	MyLogger zap.Logger
 )

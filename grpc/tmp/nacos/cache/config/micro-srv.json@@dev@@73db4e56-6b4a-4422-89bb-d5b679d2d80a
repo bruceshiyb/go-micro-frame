@@ -1,9 +1,9 @@
 {
-	"name": "gomicro-srv",
-	"host": "10.4.7.71",
-	"port": 50051,
-	"env" : "dev",
-	"tags": [
+	"name": "gomicro-srv",     // grpc 服务名称
+	"host": "10.4.7.71",    // grpc 本地启动ip
+	"port": 50051,          // grpc 本地启动 port
+	"env" : "dev",          // 开发环境
+	"tags": [               // grpc 服务tag
 		"gomicro",
 		"srv"
 	],

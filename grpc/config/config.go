@@ -40,10 +40,19 @@ type MqConfig struct {
 	Password string `mapstructure:"password" json:"password"`
 }
 
+type LoggerConfig struct {
+	LogFilePath string `mapstructure:"logFilePath" json:"logFilePath"`
+	LogLevel    string `mapstructure:"logLevel" json:"logLevel"`
+	MaxSize     int    `mapstructure:"maxSize" json:"maxSize"`
+	MaxBackups  int `mapstructure:"maxBackups" json:"maxBackups"`
+	MaxAge      int    `mapstructure:"maxAge" json:"maxAge"`
+}
+
 type ServerConfig struct {
 	Name string   `mapstructure:"name" json:"name"`
 	Host string   `mapstructure:"host" json:"host"`
 	Port uint64   `mapstructure:"port" json:"port"`
+	Env  string   `mapstructure:"env" json:"env"`
 	Tags []string `mapstructure:"tags" json:"tags"`
 
 	MysqlInfo   MysqlConfig  `mapstructure:"mysql" json:"mysql"`
@@ -52,6 +61,7 @@ type ServerConfig struct {
 	JaegerInfo  JaegerConfig `mapstructure:"consul" json:"jaeger"`
 	EsInfo      EsConfig     `mapstructure:"es" json:"es"`
 	MqInfo      MqConfig     `mapstructure:"mq" json:"mq"`
+	LoggerInfo  LoggerConfig `mapstructure:"logger" json:"logger"`
 }
 
 type NacosConfig struct {

@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/opentracing/opentracing-go"
+	"go-micro-frame/utils"
 	"go-micro-frame/utils/otgrpc"
 	"net"
 	"os"
@@ -20,8 +21,8 @@ import (
 	"go-micro-frame/handler"
 	"go-micro-frame/initialize"
 	"go-micro-frame/proto"
-	"go-micro-frame/utils"
 	"go-micro-frame/utils/register/consul"
+	"microframe.com/logger"
 )
 
 func main() {
@@ -29,10 +30,6 @@ func main() {
 	IP := flag.String("ip", "0.0.0.0", "ip地址")
 	Port := flag.Int("port", 0, "端口")
 	flag.Parse()
-	zap.S().Info("ip: ", *IP)
-	if *Port == 0{
-		*Port, _ = utils.GetFreePort()
-	}
 
 	zap.S().Info("port: ", *Port)
 
@@ -54,7 +51,15 @@ func main() {
 	// 初始化jaeger
 	initialize.InitJaeger()
 
-	zap.S().Info(global.ServerConfig)
+	// 初始 mylogger
+	initialize.InitMyLogger()
+
+	*Port = int(global.ServerConfig.Port)
+	if global.ServerConfig.Env != "dev" {
+		*Port, _ = utils.GetFreePort()
+	}
+
+	zap.S().Info("main函数：", global.ServerConfig)
 
 	/////////////////////////////////
 	// 启动grpc，并注册到 consul，并且使用 jaeger
@@ -84,7 +89,7 @@ func main() {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
 	zap.S().Debugf("启动服务器, 端口： %d", *Port)
-
+	logger.Info("启动微服务的端口是", logger.Int("port:", *Port))
 	/////////////////////////////////
 
 	//接收终止信号
@@ -93,7 +98,7 @@ func main() {
 	<-quit
 	if err = register_client.DeRegister(serviceId); err != nil {
 		zap.S().Info("注销失败:", err.Error())
-	}else{
+	} else {
 		zap.S().Info("注销成功")
 	}
 

@@ -36,10 +36,12 @@ v1.1.1 完成
 已经实现了下面图片介绍中的大部分功能
 
 v1.2.0 开发中
-会把db、es、jaeger、logger
+会把db、es、jaeger
 rabbitmq、redis、redsyncLock、sentinel、snowflake等再封装，
 独立管理和维护。
+
 nacos：已经完成独立封装。
+logger: 已经完成独立封装。
 
 v1.3.0 开发中
 会增加k8s的自动化发布脚本，Prometheus、Grafana监控等
