@@ -5,18 +5,21 @@ jaeger
 database/mysql
 consul-register
 consul-discovery
+snowflake
 
 [done && no test]
 
 
 [doing]
-rabbitMq
 
+
+rabbitMq: 不随着项目启动
+
+redis: 不随着项目启动
 redis-三种模式： standalone cluster sentinel
 redisSyncLock-分布式锁
 
 sentinel
-snowflake
 
 csv
 elasticSearch
