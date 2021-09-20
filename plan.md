@@ -8,12 +8,11 @@ consul-register
 consul-discovery
 snowflake
 rabbitMq
+elasticSearch
 ```
 
 进行中模块
 ```
-elasticSearch
-
 redis: 不随着项目启动
 redis-三种模式： standalone cluster sentinel
 redisSyncLock-分布式锁

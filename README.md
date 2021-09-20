@@ -59,8 +59,9 @@ jaeger: 已封装
 mysql：已封装，连接池方式
 consul-register: 已封装
 consul-discovery: 已封装
-snowflake 已封装
-rabbitmq 已封装
+snowflake: 已封装
+rabbitmq: 已封装
+elasticSearch: 已封装
 ```
 
 ```
