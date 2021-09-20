@@ -1,3 +1,5 @@
+# 开发版本 v1.2.X
+
 已经完成模块
 ```
 logger
@@ -9,6 +11,7 @@ consul-discovery
 snowflake
 rabbitMq
 elasticSearch
+sentinel
 ```
 
 进行中模块
@@ -17,13 +20,10 @@ redis: 不随着项目启动
 redis-三种模式： standalone cluster sentinel
 redisSyncLock-分布式锁
 
+
 rocketMq: 不随着项目启动
-
-sentinel
-
-csv
 kafka: 不随着项目启动
-
+csv
 ```
 
 初始化改造

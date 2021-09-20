@@ -62,6 +62,7 @@ consul-discovery: 已封装
 snowflake: 已封装
 rabbitmq: 已封装
 elasticSearch: 已封装
+sentinel
 ```
 
 ```
