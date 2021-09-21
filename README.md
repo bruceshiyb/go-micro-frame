@@ -6,7 +6,8 @@ go-micro-frame框架，是一套开源组件组合而成的微服务框架。
 
 文档参考：https://github.com/jettjia/go-micro-fram-doc
 
-项目介绍
+## 项目介绍
+
 ```
 grpc            【提供grpc接口】
 web-gin         【go实现web接口，gin调用grpc服务，提供http接口】
@@ -14,13 +15,15 @@ web-hyperf      【php实现web接口，hyperf调用grpc服务，提供http接�
 web-springboot  【java实现web接口，springboot调用grpc服务，提供http接口】
 ```
 
-运行项目
+## 运行项目
+
 ```
 1.运行 grpc 服务，里面有代码说明和使用说明
 2.运行 web-gin 服务，这里实现了调用 grpc服务，里面有代码说明和使用说明
+3.文档参考 https://github.com/jettjia/go-micro-fram-doc
 ```
 
-组件模块介绍：
+## 组件模块介绍
 
 ```
 gorm		【orm】
@@ -43,7 +46,7 @@ cron            【分布式定时任务;go:go-cron,java:xxl-job】
 分布式mysql	【go: gaea分库分表; java: shardingsphere-proxy】
 ```
 
-版本说明：
+## 版本说明
 
 ```
 v1.1.X 完成
@@ -82,4 +85,66 @@ web-hyperf: php版本的web，利用 hyperf框架调用grpc服务
 v2.0 规划
 会改造到istio或者dapr的三代微服务方式中，会单独另起一个项目进行维护
 ```
+
+
+
+## 项目演示
+
+### 启动 grpc 服务
+
+1. nacos后台配置
+
+    配置内容参考, grpc里的配置示例
+
+    <img src="images/image-20210921163646319.png" alt="image-20210921163646319" style="zoom:50%;" />
+
+2. 启动grpc项目，会从nacos读取配置
+
+```
+[root@localhost grpc]# go run main.go
+2021-09-21T15:38:26.457+0800    INFO    nacos_client/nacos_client.go:87 logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+2021-09-21T15:38:27.955+0800    INFO    nacos/nacos.go:26       从nacos读取到的全部配置如下：%!(EXTRA string={
+
+```
+
+​	consul会注册服务，这里可以启动多个grpc服务，已经实现了负载均衡的获取服务。
+
+  <img src="images/image-20210921162747411.png" alt="image-20210921162747411" style="zoom:33%;" />
+
+
+
+### 启动 web 服务
+
+1. 启动web项目，会从nacos读取配置
+
+   ```
+   [root@localhost web-gin]# go run main.go
+   2021-09-21T16:37:38.927+0800    INFO    nacos_client/nacos_client.go:87 logDir:<tmp/nacos/log>   cacheDir:<tmp/nacos/cache>
+   2021-09-21T16:37:39.118+0800    INFO    nacos/nacos.go:26       从nacos读取到的全部配置如下：%!(EXTRA string={
+   
+   ```
+
+2. 这里会从consul中负载均衡的获取到服务，也会把web注入到consul中。这样可以用nginx或者kong等来读web进行负载均衡
+
+   
+
+3. 请求用postman 访问web层的接口
+
+     <img src="images/image-20210921164033597.png" alt="image-20210921164033597" style="zoom: 25%;" />
+
+4. 链路追踪
+
+​       <img src="images/image-20210921164122346.png" alt="image-20210921164122346" style="zoom: 25%;" />
+
+
+
+### 熔断限流降级
+
+参考 sentinel章节，在web层增加处理
+
+
+
+### 网关
+
+参考kong 章节，在konga后台进行配置
 
