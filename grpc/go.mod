@@ -19,6 +19,7 @@ require (
 	google.golang.org/grpc v1.40.0
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
+	gorm.io/driver/mysql v1.1.2
 	gorm.io/gorm v1.21.13
 	microframe.com/consul v0.0.0-00010101000000-000000000000
 	microframe.com/jaeger v0.0.0-00010101000000-000000000000

@@ -1,7 +1,6 @@
 package initialize
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"os"
@@ -9,7 +8,6 @@ import (
 	"github.com/olivere/elastic/v7"
 
 	"go-micro-frame/global"
-	"go-micro-frame/model"
 )
 
 func InitEs() {
@@ -26,15 +24,15 @@ func InitEs() {
 		panic(err)
 	}
 
-	//新建mapping和index
-	exists, err := global.EsClient.IndexExists(model.EsUser{}.GetIndexName()).Do(context.Background())
-	if err != nil {
-		panic(err)
-	}
-	if !exists {
-		_, err = global.EsClient.CreateIndex(model.EsUser{}.GetIndexName()).BodyString(model.EsUser{}.GetMapping()).Do(context.Background())
-		if err != nil {
-			panic(err)
-		}
-	}
+	////新建mapping和index
+	//exists, err := global.EsClient.IndexExists(model.EsUser{}.GetIndexName()).Do(context.Background())
+	//if err != nil {
+	//	panic(err)
+	//}
+	//if !exists {
+	//	_, err = global.EsClient.CreateIndex(model.EsUser{}.GetIndexName()).BodyString(model.EsUser{}.GetMapping()).Do(context.Background())
+	//	if err != nil {
+	//		panic(err)
+	//	}
+	//}
 }

@@ -30,7 +30,7 @@ message MobileRequest{
 }
 
 message IdRequest {
-    int32 id = 1;
+    int64 id = 1;
 }
 
 message CreateUserInfo {
@@ -40,14 +40,14 @@ message CreateUserInfo {
 }
 
 message UpdateUserInfo {
-    int32 id = 1;
+    int64 id = 1;
     string nickName = 2;
     string gender = 3;
     uint64 birthDay = 4;
 }
 
 message UserInfoResponse {
-    int32 id = 1;
+    int64 id = 1;
     string passWord = 2;
     string mobile = 3;
     string nickName = 4;

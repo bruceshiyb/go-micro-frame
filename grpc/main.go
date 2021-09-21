@@ -3,18 +3,20 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/opentracing/opentracing-go"
 	"net"
 	"os"
 	"os/signal"
 	"syscall"
 
+	"github.com/opentracing/opentracing-go"
 	"github.com/satori/go.uuid"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
+	"go-micro-frame/domain/repository"
+	service2 "go-micro-frame/domain/service"
 	"go-micro-frame/global"
 	"go-micro-frame/handler"
 	"go-micro-frame/initialize"
@@ -33,26 +35,8 @@ func main() {
 
 	zap.S().Info("port: ", *Port)
 
-	// 初始化 logger
-	initialize.InitLogger()
-
-	//初始化配置文件
-	initialize.InitConfig()
-
-	// 初始化db
-	initialize.InitDB()
-
-	// 初始化 redsyncLock
-	initialize.InitRedsyncLock()
-
-	// 初始化es
-	//initialize.InitEs()
-
-	// 初始化jaeger
-	initialize.InitJaeger()
-
-	// 初始 mylogger
-	initialize.InitMyLogger()
+	// 初始化
+	initialize.InitSrv()
 
 	*Port = int(global.ServerConfig.Port)
 	if global.ServerConfig.Env != "dev" {
@@ -61,11 +45,13 @@ func main() {
 
 	zap.S().Info("main函数：", global.ServerConfig)
 
-	/////////////////////////////////
 	// 启动grpc，并注册到 consul，并且使用 jaeger
 	server := grpc.NewServer(grpc.UnaryInterceptor(otgrpc.OpenTracingServerInterceptor(opentracing.GlobalTracer())))
 
-	proto.RegisterUserServer(server, &handler.UserServer{})
+	// 创建实例
+	userService := service2.NewUserService(repository.NewUserRepository())
+
+	proto.RegisterUserServer(server, &handler.UserServer{UserService:userService})
 	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", *IP, *Port))
 	if err != nil {
 		panic("failed to listen:" + err.Error())
