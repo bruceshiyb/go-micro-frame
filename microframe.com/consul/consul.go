@@ -1,13 +1,13 @@
 package consul
 
 import (
-	"consul/otgrpc"
 	"fmt"
 
+	"github.com/hashicorp/consul/api"
 	"github.com/opentracing/opentracing-go"
 	"google.golang.org/grpc"
 
-	"github.com/hashicorp/consul/api"
+	"microframe.com/otgrpc"
 )
 
 type Registry struct {

@@ -4,8 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"github.com/opentracing/opentracing-go"
-	"go-micro-frame/utils"
-	"go-micro-frame/utils/otgrpc"
 	"net"
 	"os"
 	"os/signal"
@@ -23,6 +21,8 @@ import (
 	"go-micro-frame/proto"
 	"microframe.com/consul"
 	"microframe.com/logger"
+	"microframe.com/otgrpc"
+	"microframe.com/publicUtil"
 )
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 
 	*Port = int(global.ServerConfig.Port)
 	if global.ServerConfig.Env != "dev" {
-		*Port, _ = utils.GetFreePort()
+		*Port, _ = publicUtil.GetFreePort()
 	}
 
 	zap.S().Info("main函数：", global.ServerConfig)
