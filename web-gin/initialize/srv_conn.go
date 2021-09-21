@@ -10,10 +10,10 @@ import (
 
 	"go-micro-frame-web/global"
 	"go-micro-frame-web/proto"
-	"go-micro-frame-web/utils/otgrpc"
+	"microframe.com/otgrpc"
 )
 
-func InitSrvConn(){
+func InitSrvConn() {
 	consulInfo := global.ServerConfig.ConsulInfo
 	userConn, err := grpc.Dial(
 		fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.UserSrvInfo.Name),

@@ -22,7 +22,7 @@ import (
 	"go-micro-frame/initialize"
 	"go-micro-frame/proto"
 	"microframe.com/consul"
-	"microframe.com/logger"
+	mylogger "microframe.com/logger"
 	"microframe.com/otgrpc"
 	"microframe.com/publicUtil"
 )
@@ -51,7 +51,7 @@ func main() {
 	// 创建实例
 	userService := service2.NewUserService(repository.NewUserRepository())
 
-	proto.RegisterUserServer(server, &handler.UserServer{UserService:userService})
+	proto.RegisterUserServer(server, &handler.UserServer{UserService: userService})
 	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", *IP, *Port))
 	if err != nil {
 		panic("failed to listen:" + err.Error())
@@ -75,7 +75,7 @@ func main() {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
 	zap.S().Debugf("启动grpc服务端口： %d", *Port)
-	logger.Info("", logger.Int("启动grpc服务端口,port:", *Port))
+	mylogger.Info("", mylogger.Int("启动grpc服务端口,port:", *Port))
 	/////////////////////////////////
 
 	//接收终止信号

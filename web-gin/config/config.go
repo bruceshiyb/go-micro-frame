@@ -23,6 +23,14 @@ type JaegerConfig struct {
 	Name string `mapstructure:"name" json:"name"`
 }
 
+type LoggerConfig struct {
+	LogFilePath string `mapstructure:"logFilePath" json:"logFilePath"`
+	LogLevel    string `mapstructure:"logLevel" json:"logLevel"`
+	MaxSize     int    `mapstructure:"maxSize" json:"maxSize"`
+	MaxBackups  int    `mapstructure:"maxBackups" json:"maxBackups"`
+	MaxAge      int    `mapstructure:"maxAge" json:"maxAge"`
+}
+
 type ServerConfig struct {
 	Name string   `mapstructure:"name" json:"name"`
 	Host string   `mapstructure:"host" json:"host"`
@@ -34,6 +42,7 @@ type ServerConfig struct {
 	RedisInfo   RedisConfig   `mapstructure:"redis" json:"redis"`
 	ConsulInfo  ConsulConfig  `mapstructure:"consul" json:"consul"`
 	JaegerInfo  JaegerConfig   `mapstructure:"consul" json:"jaeger"`
+	LoggerInfo  LoggerConfig `mapstructure:"logger" json:"logger"`
 }
 
 type NacosConfig struct {
