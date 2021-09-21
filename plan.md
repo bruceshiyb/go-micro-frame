@@ -21,6 +21,7 @@ redisSyncLock-分布式锁
 rocketMq: 不随着项目启动
 kafka: 不随着项目启动
 csv
+k8s自动发布脚本
 ```
 
 初始化改造
@@ -33,12 +34,12 @@ logger: 日志
 config: nacos配置读取
 db: mysql初始化
 jaeger: 链路追踪
-缓存：redis
+
 
 可选初始化:
 es
 rabbitmq
-
+缓存：redis
 
 ```
 
