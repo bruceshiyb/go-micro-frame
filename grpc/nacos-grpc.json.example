@@ -27,7 +27,6 @@
 	"redis": {
 		"host": "10.4.7.71",
 		"port": 6379,
-		"user": "",
 		"password": ""
 	},
 	"consul": {

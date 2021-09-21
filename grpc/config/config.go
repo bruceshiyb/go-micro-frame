@@ -19,7 +19,6 @@ type ConsulConfig struct {
 type RedisConfig struct {
 	Host     string `mapstructure:"host" json:"host"`
 	Port     int    `mapstructure:"port" json:"port"`
-	User     string `mapstructure:"user" json:"user"`
 	Password string `mapstructure:"password" json:"password"`
 }
 

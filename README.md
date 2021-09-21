@@ -63,6 +63,7 @@ snowflake: 已封装
 rabbitmq: 已封装
 elasticSearch: 已封装
 sentinel
+redis: 已封装:alone sentinel cluster 三种模式
 ```
 
 ```
