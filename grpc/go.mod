@@ -3,11 +3,8 @@ module go-micro-frame
 go 1.16
 
 require (
-	github.com/armon/go-metrics v0.3.2 // indirect
 	github.com/go-redis/redis/v8 v8.11.3
 	github.com/go-redsync/redsync/v4 v4.3.0
-	github.com/hashicorp/go-immutable-radix v1.1.0 // indirect
-	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/jinzhu/gorm v1.9.16
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/olivere/elastic/v7 v7.0.29

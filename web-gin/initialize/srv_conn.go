@@ -1,26 +1,17 @@
 package initialize
 
 import (
-	"fmt"
-	"github.com/opentracing/opentracing-go"
-
 	_ "github.com/mbobakov/grpc-consul-resolver" // It's important
-	"go.uber.org/zap"
-	"google.golang.org/grpc"
-
 	"go-micro-frame-web/global"
 	"go-micro-frame-web/proto"
-	"microframe.com/otgrpc"
+	"go.uber.org/zap"
+	"microframe.com/consul"
 )
 
 func InitSrvConn() {
 	consulInfo := global.ServerConfig.ConsulInfo
-	userConn, err := grpc.Dial(
-		fmt.Sprintf("consul://%s:%d/%s?wait=14s", consulInfo.Host, consulInfo.Port, global.ServerConfig.UserSrvInfo.Name),
-		grpc.WithInsecure(),
-		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy": "round_robin"}`),
-		grpc.WithUnaryInterceptor(otgrpc.OpenTracingClientInterceptor(opentracing.GlobalTracer())),
-	)
+	registerClient := consul.NewRegistryClient(global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
+	userConn, err := registerClient.Discovery(consulInfo.Host, consulInfo.Port, global.ServerConfig.UserSrvInfo.Name)
 	if err != nil {
 		zap.S().Fatal("[InitSrvConn] 连接 【用户服务失败】")
 	}

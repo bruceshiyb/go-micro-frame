@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"os"
 	"os/signal"
 	"syscall"
@@ -33,13 +34,13 @@ func main() {
 	}
 
 	//注册服务健康检查
-	server := grpc.NewServer()
-	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
+	grpcServer := grpc.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, health.NewServer())
 
 	// 注册服务到 consul中
 	registerClient := consul.NewRegistryClient(global.ServerConfig.ConsulInfo.Host, global.ServerConfig.ConsulInfo.Port)
 	serviceId := fmt.Sprintf("%s", uuid.NewV4())
-	err := registerClient.Register(global.ServerConfig.Host, global.ServerConfig.Port, global.ServerConfig.Name, global.ServerConfig.Tags, serviceId)
+	err := registerClient.RegisterHttp(global.ServerConfig.Host, global.ServerConfig.Port, global.ServerConfig.Name, global.ServerConfig.Tags, serviceId)
 	if err != nil {
 		zap.S().Panic("服务注册失败:", err.Error())
 	}
