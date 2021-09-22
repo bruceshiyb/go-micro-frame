@@ -1,8 +1,10 @@
 # go-micro-frame
 
-go-micro-frame框架，是一套开源组件组合而成的微服务框架。
+go-micro-frame，极简、快速、零成本，积木式go微服务框架。
 
-没有框架的强约束，没有学习上的成本。只需要搭建积木的方式组合自己的框架来快速开展业务。框架只保留了微服务的核心功能，使用者可以完全自主的进行改造。
+go-micro-frame，是一套开源组件组合而成的微服务框架。所有组件都可自行替换。
+
+没有框架的强约束，没有学习上的成本。只需要搭建积木的方式组合自己的框架来快速开展业务。框架只保留了微服务的核心功能，使用者可以完全自主的进行改造和模块替换。目前最新版本是1.3.2。
 
 文档参考：https://github.com/jettjia/go-micro-fram-doc
 
@@ -11,8 +13,8 @@ go-micro-frame框架，是一套开源组件组合而成的微服务框架。
 ```
 grpc            【提供grpc接口】
 web-gin         【go实现web接口，gin调用grpc服务，提供http接口】
-web-hyperf      【php实现web接口，hyperf调用grpc服务，提供http接口】 
-web-springboot  【java实现web接口，springboot调用grpc服务，提供http接口】
+web-hyperf      【php实现web接口，hyperf调用grpc服务，提供http接口，规划】 
+web-springboot  【java实现web接口，springboot调用grpc服务，提供http接口，规划】
 ```
 
 ## 运行项目
